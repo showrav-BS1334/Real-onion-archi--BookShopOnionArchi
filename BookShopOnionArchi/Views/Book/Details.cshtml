@@ -1,0 +1,24 @@
+﻿@model BookShopOnionArchi.Models.BookViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="home">
+    <div class="detailsInfo">
+        <h3>Book: @Model.Title</h3>
+        <h3>Author: <a class="button btn-aqua" asp-controller="Author" asp-action="Details" asp-route-id="@Model.AuthorId">@Model.Author.Name</a></h3>
+        <h3>Language: @Model.Language</h3>
+    </div>
+    <br />
+
+    <div class="centerItems">
+        <img src="@Model.CoverPath" alt="Image" />
+    </div>
+
+    <div class="centerItems" style="margin-top: 20px">
+        <a asp-controller="Book" asp-action="Edit" asp-route-id=@Model.Id class="button btn-green">Update</a>
+        <a asp-controller="Book" asp-action="Delete" asp-route-id=@Model.Id class="button btn-red">Delete</a>
+        <a asp-controller="Book" asp-action="Index" class="button btn-gray">Back to Book List</a>
+    </div>
+</div>

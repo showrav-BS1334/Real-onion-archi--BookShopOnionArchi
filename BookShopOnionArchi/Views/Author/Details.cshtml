@@ -1,0 +1,43 @@
+﻿@model BookShopOnionArchi.Models.AuthorViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="home">
+    <div class="centerItems">
+        <img src="@Model.ImagePath" alt="Image" style="width: 200px; height: 200px;" />
+    </div>
+    <div class="detailsInfo">
+        <h3>Name: @Model.Name</h3>
+        <h3>Address: @Model.Address</h3>
+        <h3>Uni: @Model.Uni</h3>
+    </div>
+    
+    <div class="smallTables">
+        <table>
+            <thead>
+                <tr>
+                    <th>Books</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var book in Model.Books)
+                {
+                    <tr>
+                        <td width="50%">
+                            <a asp-controller="Book" asp-action="Details" asp-route-id=@book.Id>@book.Title</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <div class="centerItems" style="margin-top: 20px">
+        <a asp-controller="Author" asp-action="Edit" asp-route-id=@Model.Id class="button btn-green">Update</a>
+        @*delete button with a confirmation pop up*@
+        <a onclick="return confirm('All books of this author will be deleted. Are you sure to delete?')" asp-controller="Author" asp-action="Delete" asp-route-id=@Model.Id class="button btn-red">Delete</a>
+        <a asp-controller="Book" asp-action="Index" class="button btn-gray">Back to Book List</a>
+    </div>
+</div>

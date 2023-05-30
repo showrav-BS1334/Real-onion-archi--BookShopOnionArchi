@@ -1,0 +1,30 @@
+﻿@model BookShopOnionArchi.Models.AuthorViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="form centerItems">
+    <form method="post" asp-action="Edit">
+        <div>
+            <div>
+                <h2>Update Author info</h2>
+            </div>
+            <div>
+                <label>Name</label>
+                <input asp-for="Name"/>
+            </div>
+            <div>
+                <label>Address</label>
+                <input asp-for="Address"/>
+            </div>
+            <div>
+                <label>Image Link</label>
+                <input asp-for="ImagePath"/>
+            </div>
+
+            <button type="submit" class="button btn-green">Update</button>
+            <a asp-controller="Book" asp-action="Index" class="button btn-gray">Back to Book List</a>
+        </div>
+    </form>
+</div>

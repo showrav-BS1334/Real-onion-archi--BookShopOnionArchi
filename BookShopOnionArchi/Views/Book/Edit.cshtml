@@ -1,0 +1,44 @@
+﻿@model BookShopOnionArchi.Models.BookUpdateViewModel
+
+<form method="post" asp-action="Edit">
+    <div class="border" p-3 mt-4>
+        <div class="row pb-2">
+            <h2 class="text-primary">Update Book info</h2>
+            <hr />
+        </div>
+
+        <div class="mb-3">
+            <label>Title</label>
+            <input asp-for=@Model.Book.Title class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Book Cover Link</label>
+            <input asp-for=@Model.Book.CoverPath class="form-control" />
+        </div>
+        <div class="mb-3">
+            <label>Language</label>
+            <input asp-for=@Model.Book.Language class="form-control" />
+        </div>
+
+        <input asp-for=@Model.Book.Id type="hidden" />
+        <input asp-for=@Model.Book.Title type="hidden" />
+        <input asp-for=@Model.Book.CoverPath type="hidden" />
+        <input asp-for=@Model.Book.Language type="hidden" />
+
+        
+        @*dropdown menu*@
+        <div class="mb-3">
+            <label>Select an author</label>
+            <select name="authorId">
+                @foreach (var author in Model.AuthorList)
+                {
+                    <option value=@author.Id>@author.Name</option>
+                }
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width: 150px">Update</button>
+        <a asp-controller="Book" asp-action="Index" class="btn btn-secondary" style="width:150px">Back to Book List</a>
+        <a asp-controller="Author" asp-action="Create" class="btn btn-success mx-2" style="vertical-align:middle; align-items: center">Add a new author</a>
+    </div>
+</form>
